@@ -16,5 +16,10 @@ namespace ProjectCool_BETA_v1._0
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            label6.Text = Convert.ToString(Color.FromArgb(40,70,50));
+        }
     }
 }
