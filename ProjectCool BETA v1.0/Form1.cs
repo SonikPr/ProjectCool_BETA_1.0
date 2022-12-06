@@ -122,19 +122,7 @@ namespace ProjectCool_BETA_v1._0
         {
             DevicePooling.Stop();
             DeviceSerial.SendData(CreateQueue());
-
-            while (true)
-            {
-                if (DeviceSerial.IncomingData())
-                {
-                    string data = DeviceSerial.ReceiveData();
-                    if (data.Contains("OK"))
-                    {
-                        DevicePooling.Start();
-                        break;
-                    }
-                }
-            }
+            DevicePooling.Start();
             
         }
 
