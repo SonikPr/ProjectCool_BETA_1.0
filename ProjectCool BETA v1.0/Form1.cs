@@ -60,8 +60,12 @@ namespace ProjectCool_BETA_v1._0
         }
         private void PortSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DeviceSerial.StopSerial();
             string result = DeviceSerial.CreateSerial(9600, PortSelect.Text);
-            MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (result != "OK")
+            {
+                MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             DevicePooling.Start();
         }
 
@@ -97,8 +101,12 @@ namespace ProjectCool_BETA_v1._0
                     progressBar1.Value = sysfans.CurrentFanSpeed;
                     Fan_speed_info.Text = sysfans.CurrentFanSpeed.ToString() + "%";
                     LED_mode_info.Text = LED_mode.Text;
-                    Case_temp__info.Text = (systemps.T / 10).ToString();
-                    Case_humidity_info.Text = (systemps.H / 10).ToString();
+                    double systemps_t = systemps.T;
+                    double systemps_h = systemps.H;
+                    systemps_t = systemps_t / 10;
+                    systemps_h = systemps_h / 10;
+                    Case_temp__info.Text = systemps_t.ToString();
+                    Case_humidity_info.Text = systemps_h.ToString();
 
                     if (update_all)
                     {
