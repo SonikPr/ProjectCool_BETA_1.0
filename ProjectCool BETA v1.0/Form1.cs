@@ -125,13 +125,17 @@ namespace ProjectCool_BETA_v1._0
 
             while (true)
             {
-                if (DeviceSerial.ReceiveData().Contains("OK"))
+                if (DeviceSerial.IncomingData())
                 {
-                    DevicePooling.Start();
-                    break;
+                    string data = DeviceSerial.ReceiveData();
+                    if (data.Contains("OK"))
+                    {
+                        DevicePooling.Start();
+                        break;
+                    }
                 }
             }
-
+            
         }
 
         string CreateQueue()
@@ -145,7 +149,7 @@ namespace ProjectCool_BETA_v1._0
             sysleds.ColorChangeSpeed = color_change_track.Value;
             sysleds.BreatheSpeed = Breathe_speed_track.Value;
             string queue = "";
-            queue = sysfans.CurrentFanMode + ";" + sysfans.TargetFanSpeed + ";" + sysleds.Mode + ";" + sysleds.Brightness + ";" + sysleds.Hue + ";" + 255 + ";" + sysleds.ColorChangeSpeed + ";" + sysleds.BreatheSpeed + ";" + "E";
+            queue = sysfans.CurrentFanMode + ";" + sysfans.TargetFanSpeed + ";" + sysleds.Mode + ";" + sysleds.brightness255 + ";" + sysleds.Hue + ";" + 255 + ";" + sysleds.ColorChangeSpeed + ";" + sysleds.BreatheSpeed + ";" + "E";
             return queue;
         }
     }

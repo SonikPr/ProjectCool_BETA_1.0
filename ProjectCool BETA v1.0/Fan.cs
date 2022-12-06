@@ -16,7 +16,7 @@ namespace ProjectCool_BETA_v1._0
 
         public int CurrentFanSpeed
         {
-            get { return map(fan_speed, 0, 255, 0, 100); }
+            get { return fan_speed; }
             set { fan_speed = value; }
         }
 

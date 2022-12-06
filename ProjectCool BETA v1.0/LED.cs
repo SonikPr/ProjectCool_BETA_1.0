@@ -32,6 +32,11 @@ namespace ProjectCool_BETA_v1._0
             set { BRIGHTNESS = map(value, 0, 100, 0, 255);  }
         }
 
+        public int brightness255
+        {
+            get { return BRIGHTNESS; }
+        }
+
         public int Hue
         {
             get { return LIGHT_COLOR; }
