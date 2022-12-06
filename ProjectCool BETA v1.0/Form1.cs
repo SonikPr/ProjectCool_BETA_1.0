@@ -20,7 +20,6 @@ namespace ProjectCool_BETA_v1._0
         SerialCommunicator DeviceSerial = new SerialCommunicator();
         LED sysleds = new LED();
         Fan sysfans = new Fan();
-        int pooling_rate = 1000;
         int[] DeviceData = new int[12];
         string[] DeviceDataString = new string[12];
         bool update_all = true;
@@ -55,10 +54,9 @@ namespace ProjectCool_BETA_v1._0
         private void Form1_Load(object sender, EventArgs e)
         {
             PortSelect.Items.AddRange(DeviceSerial.AvailablePorts);
-            RefreshRate.Text = pooling_rate.ToString();
             sysleds.CreateLed();
             sysfans.CreateFans();
-            DevicePooling.Interval = pooling_rate;
+            DevicePooling.Interval = (int)poolingRate.Value;
         }
         private void PortSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -73,10 +71,10 @@ namespace ProjectCool_BETA_v1._0
             if (DeviceSerial.IncomingData())
             {
                 data = DeviceSerial.ReceiveData();
-                if (data.Contains(";"))
-                {
                     DeviceDataString = data.Split(';');
 
+                try
+                {
                     for (int i = 0; i < DeviceDataString.Length - 1; i++) //Converting each character into 
                     {
                         DeviceData[i] = Convert.ToInt32(DeviceDataString[i]);
@@ -85,13 +83,15 @@ namespace ProjectCool_BETA_v1._0
                     sysfans.CurrentFanMode = DeviceData[0];
                     sysleds.Mode = (byte)DeviceData[2];
                     sysleds.setBrightnessFromDevice(DeviceData[3]);
+                    sysleds.Hue = DeviceData[4];
+                    sysleds.Sat = DeviceData[5];
                     sysleds.ColorChangeSpeed = DeviceData[6];
                     sysleds.BreatheSpeed = DeviceData[7];
                     sysfans.CurrentFanSpeed = DeviceData[8];
                     systemps.T = DeviceData[9];
                     systemps.H = DeviceData[10];
 
-                    
+
 
                     Fan_mode_info.Text = Fan_mode.Text;
                     progressBar1.Value = sysfans.CurrentFanSpeed;
@@ -107,14 +107,21 @@ namespace ProjectCool_BETA_v1._0
                         brightness_manual_track.Value = sysleds.Brightness;
                         color_change_track.Value = sysleds.ColorChangeSpeed;
                         Breathe_speed_track.Value = sysleds.BreatheSpeed;
+                        Light_color_track.Value = sysleds.Hue;
+                        Saturation_track.Value = sysleds.Sat;
                         update_all = false;
                     }
+                }
+                catch (Exception EX)
+                {
+                    poolingRate.Value = 1000;
                 }
             }
         }
 
         private void DevicePooling_Tick(object sender, EventArgs e)
         {
+            DevicePooling.Interval = (int)poolingRate.Value;
             UpdateInfo();
         }
 
@@ -137,8 +144,9 @@ namespace ProjectCool_BETA_v1._0
             sysleds.ColorChangeSpeed = color_change_track.Value;
             sysleds.BreatheSpeed = Breathe_speed_track.Value;
             string queue = "";
-            queue = sysfans.CurrentFanMode + ";" + sysfans.TargetFanSpeed + ";" + sysleds.Mode + ";" + sysleds.brightness255 + ";" + sysleds.Hue + ";" + 255 + ";" + sysleds.ColorChangeSpeed + ";" + sysleds.BreatheSpeed + ";" + "E";
+            queue = sysfans.CurrentFanMode + ";" + sysfans.TargetFanSpeed + ";" + sysleds.Mode + ";" + sysleds.brightness255 + ";" + sysleds.Hue + ";" + sysleds.Sat + ";" + sysleds.ColorChangeSpeed + ";" + sysleds.BreatheSpeed + ";" + "E";
             return queue;
         }
+
     }
 }
