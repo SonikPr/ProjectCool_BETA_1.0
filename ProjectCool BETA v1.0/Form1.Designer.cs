@@ -53,8 +53,6 @@ namespace ProjectCool_BETA_v1._0
             this.label2 = new System.Windows.Forms.Label();
             this.RefreshRate = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ColorGet = new System.Windows.Forms.Button();
-            this.ColorPreview = new System.Windows.Forms.Panel();
             this.color_change_track = new System.Windows.Forms.TrackBar();
             this.Breathe_speed_track = new System.Windows.Forms.TrackBar();
             this.brightness_manual_track = new System.Windows.Forms.TrackBar();
@@ -66,6 +64,9 @@ namespace ProjectCool_BETA_v1._0
             this.label8 = new System.Windows.Forms.Label();
             this.Commit = new System.Windows.Forms.Button();
             this.DevicePooling = new System.Windows.Forms.Timer(this.components);
+            this.Light_color_track = new System.Windows.Forms.TrackBar();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Saturation_track = new System.Windows.Forms.TrackBar();
             this.Summary.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FanSpeed_manual_track)).BeginInit();
@@ -73,6 +74,8 @@ namespace ProjectCool_BETA_v1._0
             ((System.ComponentModel.ISupportInitialize)(this.color_change_track)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Breathe_speed_track)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brightness_manual_track)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Light_color_track)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Saturation_track)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -266,7 +269,7 @@ namespace ProjectCool_BETA_v1._0
             "Quiet",
             "Fan off",
             "Manual fan",
-            "Fan off"});
+            "Fan full speed"});
             this.Fan_mode.Location = new System.Drawing.Point(135, 30);
             this.Fan_mode.Name = "Fan_mode";
             this.Fan_mode.Size = new System.Drawing.Size(121, 28);
@@ -311,11 +314,12 @@ namespace ProjectCool_BETA_v1._0
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.groupBox2.Controls.Add(this.ColorGet);
-            this.groupBox2.Controls.Add(this.ColorPreview);
             this.groupBox2.Controls.Add(this.color_change_track);
             this.groupBox2.Controls.Add(this.Breathe_speed_track);
+            this.groupBox2.Controls.Add(this.Saturation_track);
+            this.groupBox2.Controls.Add(this.Light_color_track);
             this.groupBox2.Controls.Add(this.brightness_manual_track);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.LED_mode);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label9);
@@ -325,33 +329,15 @@ namespace ProjectCool_BETA_v1._0
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.groupBox2.Location = new System.Drawing.Point(18, 430);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(651, 291);
+            this.groupBox2.Size = new System.Drawing.Size(651, 431);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "LED ARGB control";
             // 
-            // ColorGet
-            // 
-            this.ColorGet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColorGet.Location = new System.Drawing.Point(135, 116);
-            this.ColorGet.Name = "ColorGet";
-            this.ColorGet.Size = new System.Drawing.Size(82, 36);
-            this.ColorGet.TabIndex = 5;
-            this.ColorGet.Text = "Change";
-            this.ColorGet.UseVisualStyleBackColor = true;
-            this.ColorGet.Click += new System.EventHandler(this.ColorGet_Click);
-            // 
-            // ColorPreview
-            // 
-            this.ColorPreview.Location = new System.Drawing.Point(223, 115);
-            this.ColorPreview.Name = "ColorPreview";
-            this.ColorPreview.Size = new System.Drawing.Size(54, 37);
-            this.ColorPreview.TabIndex = 4;
-            // 
             // color_change_track
             // 
             this.color_change_track.LargeChange = 10;
-            this.color_change_track.Location = new System.Drawing.Point(167, 221);
+            this.color_change_track.Location = new System.Drawing.Point(166, 376);
             this.color_change_track.Maximum = 100;
             this.color_change_track.Name = "color_change_track";
             this.color_change_track.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -362,7 +348,7 @@ namespace ProjectCool_BETA_v1._0
             // Breathe_speed_track
             // 
             this.Breathe_speed_track.LargeChange = 10;
-            this.Breathe_speed_track.Location = new System.Drawing.Point(134, 162);
+            this.Breathe_speed_track.Location = new System.Drawing.Point(138, 317);
             this.Breathe_speed_track.Maximum = 40;
             this.Breathe_speed_track.Name = "Breathe_speed_track";
             this.Breathe_speed_track.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -412,7 +398,7 @@ namespace ProjectCool_BETA_v1._0
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 234);
+            this.label9.Location = new System.Drawing.Point(16, 389);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(144, 20);
             this.label9.TabIndex = 0;
@@ -421,7 +407,7 @@ namespace ProjectCool_BETA_v1._0
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 175);
+            this.label7.Location = new System.Drawing.Point(20, 330);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 20);
             this.label7.TabIndex = 0;
@@ -449,7 +435,7 @@ namespace ProjectCool_BETA_v1._0
             // 
             this.Commit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Commit.ForeColor = System.Drawing.Color.Lime;
-            this.Commit.Location = new System.Drawing.Point(512, 727);
+            this.Commit.Location = new System.Drawing.Point(512, 867);
             this.Commit.Name = "Commit";
             this.Commit.Size = new System.Drawing.Size(157, 35);
             this.Commit.TabIndex = 4;
@@ -462,12 +448,43 @@ namespace ProjectCool_BETA_v1._0
             this.DevicePooling.Interval = 1000;
             this.DevicePooling.Tick += new System.EventHandler(this.DevicePooling_Tick);
             // 
+            // Light_color_track
+            // 
+            this.Light_color_track.LargeChange = 10;
+            this.Light_color_track.Location = new System.Drawing.Point(135, 111);
+            this.Light_color_track.Maximum = 255;
+            this.Light_color_track.Name = "Light_color_track";
+            this.Light_color_track.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Light_color_track.Size = new System.Drawing.Size(469, 45);
+            this.Light_color_track.TabIndex = 3;
+            this.Light_color_track.TickStyle = System.Windows.Forms.TickStyle.Both;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 232);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(122, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Light saturation:";
+            // 
+            // Saturation_track
+            // 
+            this.Saturation_track.LargeChange = 10;
+            this.Saturation_track.Location = new System.Drawing.Point(134, 219);
+            this.Saturation_track.Maximum = 255;
+            this.Saturation_track.Name = "Saturation_track";
+            this.Saturation_track.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Saturation_track.Size = new System.Drawing.Size(469, 45);
+            this.Saturation_track.TabIndex = 3;
+            this.Saturation_track.TickStyle = System.Windows.Forms.TickStyle.Both;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.ClientSize = new System.Drawing.Size(681, 774);
+            this.ClientSize = new System.Drawing.Size(681, 914);
             this.Controls.Add(this.Commit);
             this.Controls.Add(this.RefreshRate);
             this.Controls.Add(this.PortSelect);
@@ -494,6 +511,8 @@ namespace ProjectCool_BETA_v1._0
             ((System.ComponentModel.ISupportInitialize)(this.color_change_track)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Breathe_speed_track)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brightness_manual_track)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Light_color_track)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Saturation_track)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -529,14 +548,15 @@ namespace ProjectCool_BETA_v1._0
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button ColorGet;
-        private System.Windows.Forms.Panel ColorPreview;
         private System.Windows.Forms.TrackBar color_change_track;
         private System.Windows.Forms.TrackBar Breathe_speed_track;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button Commit;
         private System.Windows.Forms.Timer DevicePooling;
+        private System.Windows.Forms.TrackBar Light_color_track;
+        private System.Windows.Forms.TrackBar Saturation_track;
+        private System.Windows.Forms.Label label5;
     }
 }
 

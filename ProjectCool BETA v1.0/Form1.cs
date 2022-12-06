@@ -67,16 +67,6 @@ namespace ProjectCool_BETA_v1._0
             DevicePooling.Start();
         }
 
-        private void ColorGet_Click(object sender, EventArgs e)
-        {
-            ColorDialog MyDialog = new ColorDialog();
-            MyDialog.AllowFullOpen = true;
-            MyDialog.ShowHelp = true;
-             if (MyDialog.ShowDialog() == DialogResult.OK)
-              ColorPreview.BackColor = MyDialog.Color;
-
-        }
-
         void UpdateInfo() {
             DeviceSerial.SendData("G");
             string data = "0";
@@ -132,9 +122,14 @@ namespace ProjectCool_BETA_v1._0
         {
             DevicePooling.Stop();
             DeviceSerial.SendData(CreateQueue());
-            if (DeviceSerial.ReceiveData().Contains("OK"))
+
+            while (true)
             {
-                DevicePooling.Start();
+                if (DeviceSerial.ReceiveData().Contains("OK"))
+                {
+                    DevicePooling.Start();
+                    break;
+                }
             }
 
         }
@@ -145,11 +140,12 @@ namespace ProjectCool_BETA_v1._0
             sysfans.TargetFanSpeed = FanSpeed_manual_track.Value;
             sysleds.Mode = (byte)LED_mode.SelectedIndex;
             sysleds.Brightness = brightness_manual_track.Value;
-            sysleds.SetColor(ColorPreview.BackColor);
+            sysleds.Hue = Light_color_track.Value;
+            sysleds.Sat = Saturation_track.Value;
             sysleds.ColorChangeSpeed = color_change_track.Value;
             sysleds.BreatheSpeed = Breathe_speed_track.Value;
             string queue = "";
-            queue = sysfans.CurrentFanMode + ";" + sysfans.TargetFanSpeed + ";" + sysleds.Mode + ";" + sysleds.Brightness + ";" + sysleds.Hue + ";" + sysleds.Sat + ";" + sysleds.ColorChangeSpeed + ";" + sysleds.BreatheSpeed + ";" + "E";
+            queue = sysfans.CurrentFanMode + ";" + sysfans.TargetFanSpeed + ";" + sysleds.Mode + ";" + sysleds.Brightness + ";" + sysleds.Hue + ";" + 255 + ";" + sysleds.ColorChangeSpeed + ";" + sysleds.BreatheSpeed + ";" + "E";
             return queue;
         }
     }

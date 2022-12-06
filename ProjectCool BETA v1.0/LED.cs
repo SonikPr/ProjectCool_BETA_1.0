@@ -34,20 +34,16 @@ namespace ProjectCool_BETA_v1._0
 
         public int Hue
         {
-            get { return map(LIGHT_COLOR,0,360,0,255); }
+            get { return LIGHT_COLOR; }
+            set { LIGHT_COLOR = value; }
         }
 
         public int Sat
         {
-            get { return map(LIGHT_SAT, 0, 100, 0, 255); }
+            get { return LIGHT_SAT; }
+            set { LIGHT_SAT = value; }
         }
-
-        public void SetColor(Color color)
-        {
-            LIGHT_COLOR = (int)color.GetHue();
-            LIGHT_SAT = (int)color.GetSaturation();
-        }   
-        
+ 
 
         public int BreatheSpeed
         {
