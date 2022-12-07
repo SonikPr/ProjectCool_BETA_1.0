@@ -1,7 +1,7 @@
 ﻿
 namespace ProjectCool_BETA_v1._0
 {
-    partial class Form1
+    partial class ProjectCool
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace ProjectCool_BETA_v1._0
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectCool));
             this.label1 = new System.Windows.Forms.Label();
             this.Summary = new System.Windows.Forms.GroupBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -46,13 +46,13 @@ namespace ProjectCool_BETA_v1._0
             this.FM = new System.Windows.Forms.Label();
             this.PS = new System.Windows.Forms.Label();
             this.PortSelect = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.FanControl = new System.Windows.Forms.GroupBox();
             this.FanSpeed_manual_track = new System.Windows.Forms.TrackBar();
             this.Fan_mode = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ARGB_control = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.color_change_track = new System.Windows.Forms.TrackBar();
@@ -71,9 +71,9 @@ namespace ProjectCool_BETA_v1._0
             this.DevicePooling = new System.Windows.Forms.Timer(this.components);
             this.poolingRate = new System.Windows.Forms.NumericUpDown();
             this.Summary.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.FanControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FanSpeed_manual_track)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.ARGB_control.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.color_change_track)).BeginInit();
@@ -89,11 +89,11 @@ namespace ProjectCool_BETA_v1._0
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Lime;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(283, 35);
+            this.label1.Size = new System.Drawing.Size(293, 35);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Project Cool BETA v.10";
+            this.label1.Text = "Project Cool BETA v.1.6";
             // 
             // Summary
             // 
@@ -236,20 +236,20 @@ namespace ProjectCool_BETA_v1._0
             this.PortSelect.TabIndex = 2;
             this.PortSelect.SelectedIndexChanged += new System.EventHandler(this.PortSelect_SelectedIndexChanged);
             // 
-            // groupBox1
+            // FanControl
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.groupBox1.Controls.Add(this.FanSpeed_manual_track);
-            this.groupBox1.Controls.Add(this.Fan_mode);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.groupBox1.Location = new System.Drawing.Point(18, 262);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(651, 162);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Fans control";
+            this.FanControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.FanControl.Controls.Add(this.FanSpeed_manual_track);
+            this.FanControl.Controls.Add(this.Fan_mode);
+            this.FanControl.Controls.Add(this.label3);
+            this.FanControl.Controls.Add(this.label11);
+            this.FanControl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.FanControl.Location = new System.Drawing.Point(18, 262);
+            this.FanControl.Name = "FanControl";
+            this.FanControl.Size = new System.Drawing.Size(651, 162);
+            this.FanControl.TabIndex = 1;
+            this.FanControl.TabStop = false;
+            this.FanControl.Text = "Fans control";
             // 
             // FanSpeed_manual_track
             // 
@@ -308,30 +308,30 @@ namespace ProjectCool_BETA_v1._0
             this.label2.TabIndex = 0;
             this.label2.Text = "Refresh rate:";
             // 
-            // groupBox2
+            // ARGB_control
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.groupBox2.Controls.Add(this.pictureBox2);
-            this.groupBox2.Controls.Add(this.pictureBox1);
-            this.groupBox2.Controls.Add(this.color_change_track);
-            this.groupBox2.Controls.Add(this.Breathe_speed_track);
-            this.groupBox2.Controls.Add(this.Saturation_track);
-            this.groupBox2.Controls.Add(this.Light_color_track);
-            this.groupBox2.Controls.Add(this.brightness_manual_track);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.LED_mode);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.groupBox2.Location = new System.Drawing.Point(18, 430);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(651, 372);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "LED ARGB control";
+            this.ARGB_control.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.ARGB_control.Controls.Add(this.pictureBox2);
+            this.ARGB_control.Controls.Add(this.pictureBox1);
+            this.ARGB_control.Controls.Add(this.color_change_track);
+            this.ARGB_control.Controls.Add(this.Breathe_speed_track);
+            this.ARGB_control.Controls.Add(this.Saturation_track);
+            this.ARGB_control.Controls.Add(this.Light_color_track);
+            this.ARGB_control.Controls.Add(this.brightness_manual_track);
+            this.ARGB_control.Controls.Add(this.label5);
+            this.ARGB_control.Controls.Add(this.LED_mode);
+            this.ARGB_control.Controls.Add(this.label6);
+            this.ARGB_control.Controls.Add(this.label9);
+            this.ARGB_control.Controls.Add(this.label7);
+            this.ARGB_control.Controls.Add(this.label4);
+            this.ARGB_control.Controls.Add(this.label8);
+            this.ARGB_control.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.ARGB_control.Location = new System.Drawing.Point(18, 430);
+            this.ARGB_control.Name = "ARGB_control";
+            this.ARGB_control.Size = new System.Drawing.Size(651, 372);
+            this.ARGB_control.TabIndex = 1;
+            this.ARGB_control.TabStop = false;
+            this.ARGB_control.Text = "LED ARGB control";
             // 
             // pictureBox2
             // 
@@ -529,7 +529,7 @@ namespace ProjectCool_BETA_v1._0
             0,
             0});
             // 
-            // Form1
+            // ProjectCool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -538,8 +538,8 @@ namespace ProjectCool_BETA_v1._0
             this.Controls.Add(this.poolingRate);
             this.Controls.Add(this.Commit);
             this.Controls.Add(this.PortSelect);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.ARGB_control);
+            this.Controls.Add(this.FanControl);
             this.Controls.Add(this.Summary);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
@@ -548,16 +548,16 @@ namespace ProjectCool_BETA_v1._0
             this.ForeColor = System.Drawing.Color.Green;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "Form1";
-            this.Text = "ProjectCool V1.0";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "ProjectCool";
+            this.Text = "ProjectCool V1.6";
+            this.Load += new System.EventHandler(this.ProjectCool_Load);
             this.Summary.ResumeLayout(false);
             this.Summary.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.FanControl.ResumeLayout(false);
+            this.FanControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FanSpeed_manual_track)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.ARGB_control.ResumeLayout(false);
+            this.ARGB_control.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.color_change_track)).EndInit();
@@ -588,13 +588,13 @@ namespace ProjectCool_BETA_v1._0
         private System.Windows.Forms.Label FM;
         private System.Windows.Forms.Label PS;
         private System.Windows.Forms.ComboBox PortSelect;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox FanControl;
         private System.Windows.Forms.TrackBar FanSpeed_manual_track;
         private System.Windows.Forms.ComboBox Fan_mode;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox ARGB_control;
         private System.Windows.Forms.TrackBar brightness_manual_track;
         private System.Windows.Forms.ComboBox LED_mode;
         private System.Windows.Forms.Label label4;

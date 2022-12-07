@@ -11,9 +11,9 @@ using System.Threading;
 
 namespace ProjectCool_BETA_v1._0
 {
-    public partial class Form1 : Form
+    public partial class ProjectCool : Form
     {
-        public Form1()
+        public ProjectCool()
         {
             InitializeComponent();
         }
@@ -51,7 +51,7 @@ namespace ProjectCool_BETA_v1._0
         }
 
         DeviceTemp systemps = new DeviceTemp();
-        private void Form1_Load(object sender, EventArgs e)
+        private void ProjectCool_Load(object sender, EventArgs e)
         {
             PortSelect.Items.AddRange(DeviceSerial.AvailablePorts);
             sysleds.CreateLed();
@@ -69,6 +69,7 @@ namespace ProjectCool_BETA_v1._0
             DevicePooling.Start();
         }
 
+        byte error_count = 0;
         void UpdateInfo() {
             DeviceSerial.SendData("G");
             string data = "0";
@@ -122,7 +123,14 @@ namespace ProjectCool_BETA_v1._0
                 }
                 catch (Exception EX)
                 {
+                     
+                    if (error_count++ >= 5){
+                        error_count = 0;
+                        MessageBox.Show("Error connectiong to device", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     poolingRate.Value = 1000;
+                    DeviceSerial.ResetBuffer();
+                    update_all = true;
                 }
             }
         }
@@ -135,10 +143,19 @@ namespace ProjectCool_BETA_v1._0
 
         private void Commit_Click(object sender, EventArgs e)
         {
+            CommitChanges();   
+        }
+
+        void CommitChanges()
+        {
             DevicePooling.Stop();
             DeviceSerial.SendData(CreateQueue());
-            DevicePooling.Start();
-            
+            if (DeviceSerial.ReceiveData() != "OK")
+            {
+                DevicePooling.Start();
+            }
+            else
+                CommitChanges();
         }
 
         string CreateQueue()
@@ -155,6 +172,5 @@ namespace ProjectCool_BETA_v1._0
             queue = sysfans.CurrentFanMode + ";" + sysfans.TargetFanSpeed + ";" + sysleds.Mode + ";" + sysleds.brightness255 + ";" + sysleds.Hue + ";" + sysleds.Sat + ";" + sysleds.ColorChangeSpeed + ";" + sysleds.BreatheSpeed + ";" + "E";
             return queue;
         }
-
     }
 }

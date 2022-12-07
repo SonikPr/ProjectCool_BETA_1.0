@@ -45,7 +45,8 @@ namespace ProjectCool_BETA_v1._0
         public int StopSerial() {
             if (MainPort.IsOpen)
             {
-                MainPort.Close();
+                this.ResetBuffer();
+                MainPort.Close();  
                 return 0;
             }
             else
@@ -70,6 +71,10 @@ namespace ProjectCool_BETA_v1._0
                 return false;
         }
 
+        public void ResetBuffer()
+        {
+            MainPort.DiscardInBuffer();
+        }
         public string ReceiveData()
         {
             try
