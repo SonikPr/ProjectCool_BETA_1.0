@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjectCool_BETA_v1._0
 {
+    //Cyberpunk Edgerunners
+    //Like me and Dasha
+    //This design and layout is an easter egg, is you know - you know
     public partial class ProjectCool : Form
     {
         public ProjectCool()
