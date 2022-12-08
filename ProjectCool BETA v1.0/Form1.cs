@@ -258,13 +258,14 @@ namespace ProjectCool_BETA_v1._0
             {
                 case 0:
                     Connection.Text = "NULL";
-                    ReverseColors(Connection, DevicePortLabel, 1);
+                    ReverseColors(Connection, DevicePortLabel, 0);
                     break;
                 case 1:
                     Connection.Text = "STABLE";
                     ReverseColors(Connection, DevicePortLabel, 0);
                     break;
                 case 2:
+                    GraphicsWatchdog.Interval = 200;
                     Connection.Text = "TRANSMIT";
                     if(tick++%2==0)
                     ReverseColors(Connection, DevicePortLabel, 1);
@@ -272,6 +273,7 @@ namespace ProjectCool_BETA_v1._0
                         ReverseColors(Connection, DevicePortLabel, 0);
                     break;
                 case 3:
+                    GraphicsWatchdog.Interval = 500;
                     Connection.Text = "RECEIVE";
                     if (tick++ % 2 != 0)
                         ReverseColors(Connection, DevicePortLabel, 1);
@@ -279,6 +281,7 @@ namespace ProjectCool_BETA_v1._0
                         ReverseColors(Connection, DevicePortLabel, 0);
                     break;
                 case 4:
+                    GraphicsWatchdog.Interval = 100;
                     Connection.Text = "ERROR";
                         ReverseColors(Connection, DevicePortLabel, 1);        
                     break;
