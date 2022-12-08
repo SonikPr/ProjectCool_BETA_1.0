@@ -2699,4 +2699,7 @@
         gnCiIJQgCCMGQkUsOyCEdT3Usn1Za9EOgd1a4/8DQMArIfVMV6IAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="GraphicsWatchdog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>146, 17</value>
+  </metadata>
 </root>

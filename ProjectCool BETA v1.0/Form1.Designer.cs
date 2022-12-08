@@ -88,6 +88,7 @@ namespace ProjectCool_BETA_v1._0
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.brightness_manual_track = new System.Windows.Forms.TrackBar();
+            this.GraphicsWatchdog = new System.Windows.Forms.Timer(this.components);
             this.MainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.poolingRate)).BeginInit();
             this.FanControl.SuspendLayout();
@@ -223,9 +224,9 @@ namespace ProjectCool_BETA_v1._0
             this.Connection.Font = new System.Drawing.Font("Technos", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Connection.Location = new System.Drawing.Point(170, 171);
             this.Connection.Name = "Connection";
-            this.Connection.Size = new System.Drawing.Size(98, 13);
+            this.Connection.Size = new System.Drawing.Size(85, 13);
             this.Connection.TabIndex = 0;
-            this.Connection.Text = "ABSCENT";
+            this.Connection.Text = "ABSENT";
             // 
             // ButtonInfo
             // 
@@ -801,6 +802,11 @@ namespace ProjectCool_BETA_v1._0
             this.brightness_manual_track.TabIndex = 2;
             this.brightness_manual_track.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
+            // GraphicsWatchdog
+            // 
+            this.GraphicsWatchdog.Interval = 500;
+            this.GraphicsWatchdog.Tick += new System.EventHandler(this.GraphicsWatchdog_Tick);
+            // 
             // ProjectCool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -901,6 +907,7 @@ namespace ProjectCool_BETA_v1._0
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Timer GraphicsWatchdog;
     }
 }
 
