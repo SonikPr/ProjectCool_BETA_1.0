@@ -287,6 +287,7 @@ namespace ProjectCool_BETA_v1._0
             this.FanControl.Name = "FanControl";
             this.FanControl.Size = new System.Drawing.Size(86, 14);
             this.FanControl.TabIndex = 0;
+            this.FanControl.Click += new System.EventHandler(this.FanControl_Click);
             // 
             // FanMode_2
             // 
@@ -441,6 +442,7 @@ namespace ProjectCool_BETA_v1._0
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(86, 14);
             this.MainPanel.TabIndex = 0;
+            this.MainPanel.Click += new System.EventHandler(this.MainPanel_Click);
             // 
             // FanSpeed
             // 
@@ -616,10 +618,11 @@ namespace ProjectCool_BETA_v1._0
             this.LEDcontrol.Controls.Add(this.label10);
             this.LEDcontrol.Controls.Add(this.NewLedMode);
             this.LEDcontrol.Controls.Add(this.brightness_manual_track);
-            this.LEDcontrol.Location = new System.Drawing.Point(203, 453);
+            this.LEDcontrol.Location = new System.Drawing.Point(207, 453);
             this.LEDcontrol.Name = "LEDcontrol";
             this.LEDcontrol.Size = new System.Drawing.Size(86, 14);
             this.LEDcontrol.TabIndex = 0;
+            this.LEDcontrol.Click += new System.EventHandler(this.LEDcontrol_Click);
             // 
             // label16
             // 

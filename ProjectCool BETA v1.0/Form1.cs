@@ -319,5 +319,28 @@ namespace ProjectCool_BETA_v1._0
         return queue;
         }
 
+        private void MainPanel_Click(object sender, EventArgs e)
+        {
+            if(MenuEnabled != 1)
+            {
+                RenderMenu(1);
+            }
+        }
+
+        private void FanControl_Click(object sender, EventArgs e)
+        {
+            if (MenuEnabled != 2)
+            {
+                RenderMenu(2);
+            }
+        }
+
+        private void LEDcontrol_Click(object sender, EventArgs e)
+        {
+            if (MenuEnabled != 3)
+            {
+                RenderMenu(3);
+            }
+        }
     }
 }
