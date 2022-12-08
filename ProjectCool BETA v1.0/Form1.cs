@@ -106,25 +106,25 @@ namespace ProjectCool_BETA_v1._0
                         RenderMenu(0);
                         ChangeLocation(MainPanel, new Point(327, 12), new Size(873, 435));
                         ReverseColors(Monitoring, DevicePortLabel, 1);
-                        MenuEnabled = menu;
                         break;
                     case 2:
                         RenderMenu(0);
                         ChangeLocation(FanControl, new Point(327, 12), new Size(873, 435));
                         ReverseColors(FanTweak, DevicePortLabel, 1);
-                        MenuEnabled = menu;
                         break;
                     case 3:
                         RenderMenu(0);
                         ChangeLocation(LEDcontrol, new Point(327, 12), new Size(873, 435));
                         ReverseColors(LedTweak, DevicePortLabel, 1);
-                        MenuEnabled = menu;
                         break;
                 }
                 if (connection == 3 && MenuEnabled != 0)
                 {
+                   
                     CommitChanges();
                 }
+                MenuEnabled = menu;
+
             }
         }
 
@@ -153,7 +153,7 @@ namespace ProjectCool_BETA_v1._0
             RenderMenu(2);
         }
 
-        private void Monitoring_Click(object sender, MouseEventArgs e)
+        private void Monitoring_Click(object sender, EventArgs e)
         {
             RenderMenu(1);
         }
@@ -319,6 +319,5 @@ namespace ProjectCool_BETA_v1._0
         return queue;
         }
 
-        
     }
 }

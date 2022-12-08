@@ -167,7 +167,7 @@ namespace ProjectCool_BETA_v1._0
             this.Monitoring.TabIndex = 3;
             this.Monitoring.Text = "MONITORING";
             this.Monitoring.UseVisualStyleBackColor = true;
-            this.Monitoring.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Monitoring_Click);
+            this.Monitoring.Click += new System.EventHandler(this.Monitoring_Click);
             // 
             // poolingRate
             // 
@@ -820,11 +820,13 @@ namespace ProjectCool_BETA_v1._0
             this.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(98)))), ((int)(((byte)(98)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProjectCool";
             this.Text = "ProjectCool V1.6";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.ProjectCool_Load);
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
