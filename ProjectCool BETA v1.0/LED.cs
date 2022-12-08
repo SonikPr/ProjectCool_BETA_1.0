@@ -78,9 +78,9 @@ namespace ProjectCool_BETA_v1._0
                 return x;
         }
         */
-        private int map(int x, int in_min, int in_max, int out_min, int out_max)
+        public int map(int x, int in_min, int in_max, int out_min, int out_max)
         {
-            return (x - in_min) * (out_max - out_min + 1) / (in_max - in_min + 1) + out_min;
+            return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
         }
 
     }

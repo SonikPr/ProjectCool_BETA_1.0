@@ -23,6 +23,8 @@ namespace ProjectCool_BETA_v1._0
         int[] DeviceData = new int[12];
         string[] DeviceDataString = new string[12];
         bool update_all = true;
+        byte connection = 0; //absent
+        Timer GraphicsWatchdog = new Timer();
 
 
         public struct DeviceTemp
@@ -56,121 +58,199 @@ namespace ProjectCool_BETA_v1._0
             PortSelect.Items.AddRange(DeviceSerial.AvailablePorts);
             sysleds.CreateLed();
             sysfans.CreateFans();
-            DevicePooling.Interval = (int)poolingRate.Value;
         }
+
+        int MenuEnabled = 0;
+
+        private void ChangeLocation(Control cntrl, Point location, Size size)
+        {
+            cntrl.Location = location;
+            cntrl.Size = size;
+        }
+
+        private void ReverseColors(Control cntrl)
+        {
+
+        }
+
+        private void RenderMenu(byte menu)
+        {
+            switch (menu)
+            {
+                case 0:
+                    MenuEnabled = menu;
+                    ChangeLocation(MainPanel, new Point(12, 453), new Size(86, 14));
+                    ChangeLocation(FanControl, new Point(104, 453), new Size(86, 14));
+                    ChangeLocation(LEDcontrol, new Point(203, 453), new Size(86, 14));
+                    break;
+                case 1:
+                    MenuEnabled = menu;
+                    ChangeLocation(MainPanel, new Point(327, 12),  new Size(873, 435));
+                    break;
+                case 2:
+                    MenuEnabled = menu;
+                    ChangeLocation(FanControl, new Point(327, 12), new Size(873, 435));
+                    break;
+                case 3:
+                    MenuEnabled = menu;
+                    ChangeLocation(LEDcontrol, new Point(327, 12), new Size(873, 435));
+                    break;
+            }
+        }
+
+        private void DrawChart(int maximum)
+        {
+            Pen outline = new Pen(Color.FromArgb(255, 211, 98, 98));
+            System.Drawing.SolidBrush bar = new SolidBrush(Color.FromArgb(255, 211, 132, 132));
+            Bitmap bmp = new Bitmap(FanSpeed.Width, FanSpeed.Height); ;
+            using (Graphics formGraphics = Graphics.FromImage(bmp))
+            {
+                formGraphics.DrawRectangle(outline, new Rectangle(0, 0, FanSpeed.Width - 1, FanSpeed.Height - 1));
+                formGraphics.FillRectangle(bar, new Rectangle(4, 3, sysleds.map(maximum, 0, 100, 0, FanSpeed.Width - 3), FanSpeed.Height - 6));
+                outline.Dispose();
+                bar.Dispose();
+
+                formGraphics.Dispose();
+            }
+            FanSpeed.Image = bmp;
+        ;
+        }
+
+        //Stupid buttons
+        private void FanTweak_Click(object sender, EventArgs e)
+        {
+            RenderMenu(0);
+            Thread.Sleep(500);
+            RenderMenu(2);
+        }
+
+        private void Monitoring_Click(object sender, MouseEventArgs e)
+        {
+            RenderMenu(0);
+            Thread.Sleep(500);
+            RenderMenu(1);
+        }
+
+        private void LedTweak_Click(object sender, EventArgs e)
+        {
+            RenderMenu(0);
+            Thread.Sleep(500);
+            RenderMenu(3);
+        }
+        
         private void PortSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DeviceSerial.StopSerial();
-            string result = DeviceSerial.CreateSerial(9600, PortSelect.Text);
-            if (result != "OK")
-            {
-                MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            DevicePooling.Start();
+        DeviceSerial.StopSerial();
+        string result = DeviceSerial.CreateSerial(9600, PortSelect.Text);
+        if (result != "OK")
+        {
+        MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        else
+        DevicePooling.Start();
         }
 
         byte error_count = 0;
         void UpdateInfo() {
-            DeviceSerial.SendData("G");
-            string data = "0";
-            if (DeviceSerial.IncomingData())
-            {
-                data = DeviceSerial.ReceiveData();
-                    DeviceDataString = data.Split(';');
+        DeviceSerial.SendData("G");
+        string data = "0";
+        if (DeviceSerial.IncomingData())
+        {
+        data = DeviceSerial.ReceiveData();
+        DeviceDataString = data.Split(';');
 
-                try
-                {
-                    for (int i = 0; i < DeviceDataString.Length - 1; i++) //Converting each character into 
-                    {
-                        DeviceData[i] = Convert.ToInt32(DeviceDataString[i]);
-                    }
+        try
+        {
+        for (int i = 0; i < DeviceDataString.Length - 1; i++) //Converting each character into 
+        {
+        DeviceData[i] = Convert.ToInt32(DeviceDataString[i]);
+        }
 
-                    sysfans.CurrentFanMode = DeviceData[0];
-                    sysleds.Mode = (byte)DeviceData[2];
-                    sysleds.setBrightnessFromDevice(DeviceData[3]);
-                    sysleds.Hue = DeviceData[4];
-                    sysleds.Sat = DeviceData[5];
-                    sysleds.ColorChangeSpeed = DeviceData[6];
-                    sysleds.BreatheSpeed = DeviceData[7];
-                    sysfans.CurrentFanSpeed = DeviceData[8];
-                    systemps.T = DeviceData[9];
-                    systemps.H = DeviceData[10];
+        sysfans.CurrentFanMode = DeviceData[0];
+        sysleds.Mode = (byte)DeviceData[2];
+        sysleds.setBrightnessFromDevice(DeviceData[3]);
+        sysleds.Hue = DeviceData[4];
+        sysleds.Sat = DeviceData[5];
+        sysleds.ColorChangeSpeed = DeviceData[6];
+        sysleds.BreatheSpeed = DeviceData[7];
+        sysfans.CurrentFanSpeed = DeviceData[8];
+        systemps.T = DeviceData[9];
+        systemps.H = DeviceData[10];
 
 
 
-                    Fan_mode_info.Text = Fan_mode.Text;
-                    progressBar1.Value = sysfans.CurrentFanSpeed;
-                    Fan_speed_info.Text = sysfans.CurrentFanSpeed.ToString() + "%";
-                    LED_mode_info.Text = LED_mode.Text;
-                    double systemps_t = systemps.T;
-                    double systemps_h = systemps.H;
-                    systemps_t = systemps_t / 10;
-                    systemps_h = systemps_h / 10;
-                    Case_temp__info.Text = systemps_t.ToString();
-                    Case_humidity_info.Text = systemps_h.ToString();
+        FanMode.Text = FansMode.Text;
+        DrawChart(sysfans.CurrentFanSpeed);
+        LedMode.Text = NewLedMode.Text;
+        double systemps_t = systemps.T;
+        double systemps_h = systemps.H;
+        systemps_t = systemps_t / 10;
+        systemps_h = systemps_h / 10;
+        CaseTemp.Text = systemps_t.ToString();
+        CaseHumidity.Text = systemps_h.ToString();
 
-                    if (update_all)
-                    {
-                        Fan_mode.SelectedIndex = sysfans.CurrentFanMode;
-                        LED_mode.SelectedIndex = sysleds.Mode;
-                        brightness_manual_track.Value = sysleds.Brightness;
-                        color_change_track.Value = sysleds.ColorChangeSpeed;
-                        Breathe_speed_track.Value = sysleds.BreatheSpeed;
-                        Light_color_track.Value = sysleds.Hue;
-                        Saturation_track.Value = sysleds.Sat;
-                        update_all = false;
-                    }
-                }
-                catch (Exception EX)
-                {
-                     
-                    if (error_count++ >= 5){
-                        error_count = 0;
-                        MessageBox.Show("Error connectiong to device", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    poolingRate.Value = 1000;
-                    DeviceSerial.ResetBuffer();
-                    update_all = true;
-                }
-            }
+        if (update_all)
+        {       
+        FansMode.SelectedIndex = sysfans.CurrentFanMode;
+        NewLedMode.SelectedIndex = sysleds.Mode;
+        brightness_manual_track.Value = sysleds.Brightness;
+        color_change_track.Value = sysleds.ColorChangeSpeed;
+        Breathe_speed_track.Value = sysleds.BreatheSpeed;
+        Light_color_track.Value = sysleds.Hue;
+        Saturation_track.Value = sysleds.Sat;
+        update_all = false;
+        }
+        }
+        catch (Exception EX)
+        {
+
+        if (error_count++ >= 5){
+        error_count = 0;
+        MessageBox.Show("Error connectiong to device", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        DeviceSerial.ResetBuffer();
+        update_all = true;
+        }
+        }
         }
 
         private void DevicePooling_Tick(object sender, EventArgs e)
         {
-            DevicePooling.Interval = (int)poolingRate.Value;
-            UpdateInfo();
+        DevicePooling.Interval = (int)poolingRate.Value;
+        UpdateInfo();
         }
 
         private void Commit_Click(object sender, EventArgs e)
         {
-            CommitChanges();   
+        CommitChanges();   
         }
 
         void CommitChanges()
         {
-            DevicePooling.Stop();
-            DeviceSerial.SendData(CreateQueue());
-            if (DeviceSerial.ReceiveData() != "OK")
-            {
-                DevicePooling.Start();
-            }
-            else
-                CommitChanges();
+        DevicePooling.Stop();
+        DeviceSerial.SendData(CreateQueue());
+        if (DeviceSerial.ReceiveData() != "OK")
+        {
+        DevicePooling.Start();
+        }
+        else
+        CommitChanges();
         }
 
         string CreateQueue()
         {
-            sysfans.CurrentFanMode = Fan_mode.SelectedIndex;
-            sysfans.TargetFanSpeed = FanSpeed_manual_track.Value;
-            sysleds.Mode = (byte)LED_mode.SelectedIndex;
-            sysleds.Brightness = brightness_manual_track.Value;
-            sysleds.Hue = Light_color_track.Value;
-            sysleds.Sat = Saturation_track.Value;
-            sysleds.ColorChangeSpeed = color_change_track.Value;
-            sysleds.BreatheSpeed = Breathe_speed_track.Value;
-            string queue = "";
-            queue = sysfans.CurrentFanMode + ";" + sysfans.TargetFanSpeed + ";" + sysleds.Mode + ";" + sysleds.brightness255 + ";" + sysleds.Hue + ";" + sysleds.Sat + ";" + sysleds.ColorChangeSpeed + ";" + sysleds.BreatheSpeed + ";" + "E";
-            return queue;
+        sysfans.CurrentFanMode = FansMode.SelectedIndex;
+        sysfans.TargetFanSpeed = FanSpeed_manual_track.Value;
+        sysleds.Mode = (byte)NewLedMode.SelectedIndex;
+        sysleds.Brightness = brightness_manual_track.Value;
+        sysleds.Hue = Light_color_track.Value;
+        sysleds.Sat = Saturation_track.Value;
+        sysleds.ColorChangeSpeed = color_change_track.Value;
+        sysleds.BreatheSpeed = Breathe_speed_track.Value;
+        string queue = "";
+        queue = sysfans.CurrentFanMode + ";" + sysfans.TargetFanSpeed + ";" + sysleds.Mode + ";" + sysleds.brightness255 + ";" + sysleds.Hue + ";" + sysleds.Sat + ";" + sysleds.ColorChangeSpeed + ";" + sysleds.BreatheSpeed + ";" + "E";
+        return queue;
         }
+
     }
 }
