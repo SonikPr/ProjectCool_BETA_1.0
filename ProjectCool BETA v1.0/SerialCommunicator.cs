@@ -14,13 +14,13 @@ namespace ProjectCool_BETA_v1._0
         SerialPort MainPort = new SerialPort();
         private string[] ports;
         private string receivedData;
+        private string PortStatus = "DIS";
         public void CreateSerial() {
 
         }
 
         public string[] AvailablePorts
             {
-                
                 get {
                 ports = SerialPort.GetPortNames(); 
                 return ports; }
@@ -33,12 +33,14 @@ namespace ProjectCool_BETA_v1._0
                 MainPort.PortName = port_name;
                 MainPort.BaudRate = BaudRates;
                 MainPort.Open();
+                this.connected();
                 return "OK";
 
             }
             catch (Exception ex)
             {
-                return ex.ToString();
+                this.fail();
+                return ex.ToString();   
             }
         }
 
@@ -46,18 +48,23 @@ namespace ProjectCool_BETA_v1._0
             if (MainPort.IsOpen)
             {
                 this.ResetBuffer();
-                MainPort.Close();  
-                return 0;
+                MainPort.Close();
+                this.disconnected();
+                return 0;          
             }
             else
-                return 1;
+            {
+                this.fail();
+                return 1;   
+            }
         }
 
         public void SendData(string data)
         {
             if (MainPort.IsOpen)
             {
-                MainPort.Write(data);
+                this.TX();
+                MainPort.Write(data);        
             }
         }
 
@@ -65,7 +72,7 @@ namespace ProjectCool_BETA_v1._0
         {
             if (MainPort.BytesToRead > 0)
             {
-                return true;
+                return true;    
             }
             else
                 return false;
@@ -81,12 +88,44 @@ namespace ProjectCool_BETA_v1._0
             {
                 receivedData = MainPort.ReadExisting();
                 MainPort.DiscardInBuffer();
+                this.RX();
                 return receivedData;
             }
             catch(Exception ex)
             {
+                this.fail();
                 return ex.ToString();
             }
-            }
+        }
+
+        private void TX()
+        {
+            PortStatus = "TX";
+        }
+
+        private void RX()
+        {
+            PortStatus = "RX";
+        }
+
+        private void connected()
+        {
+            PortStatus = "CON";
+        }
+
+        private void disconnected()
+        {
+            PortStatus = "DIS";
+        }
+
+        private void fail()
+        {
+            PortStatus = "F";
+        }
+
+        public string GetStatus()
+        {
+            return PortStatus;
+        }
     }
 }

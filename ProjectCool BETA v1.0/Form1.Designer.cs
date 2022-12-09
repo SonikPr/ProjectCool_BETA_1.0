@@ -829,7 +829,6 @@ namespace ProjectCool_BETA_v1._0
             this.MinimizeBox = false;
             this.Name = "ProjectCool";
             this.Text = "ProjectCool V1.6";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.ProjectCool_Load);
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();

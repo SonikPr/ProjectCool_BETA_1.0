@@ -7,7 +7,7 @@
     <ProjectGuid>{C068CFF2-7859-40E2-A04C-47F0D386DF8C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>ProjectCool_BETA_v1._0</RootNamespace>
-    <AssemblyName>ProjectCool BETA v1.0</AssemblyName>
+    <AssemblyName>ProjectCool Edgerunners</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

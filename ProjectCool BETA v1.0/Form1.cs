@@ -25,7 +25,6 @@ namespace ProjectCool_BETA_v1._0
         int[] DeviceData = new int[13];
         string[] DeviceDataString = new string[13];
         bool update_all = true;
-        byte connection = 0; //absent
 
 
         public struct DeviceTemp
@@ -118,9 +117,8 @@ namespace ProjectCool_BETA_v1._0
                         ReverseColors(LedTweak, DevicePortLabel, 1);
                         break;
                 }
-                if (connection == 3 && MenuEnabled != 0)
+                if (DeviceSerial.GetStatus() == "RX" && MenuEnabled != 0)
                 {
-                   
                     CommitChanges();
                 }
                 MenuEnabled = menu;
@@ -174,17 +172,14 @@ namespace ProjectCool_BETA_v1._0
             else
             {
                 DevicePooling.Start();
-                connection = 1;
             }
         }   
         
         void UpdateInfo() {
         DeviceSerial.SendData("G");
-            connection = 2;
             string data = "0";
             if (DeviceSerial.IncomingData())
             {
-                connection = 3;
                 data = DeviceSerial.ReceiveData();
                 DeviceDataString = data.Split(';');
 
@@ -237,12 +232,10 @@ namespace ProjectCool_BETA_v1._0
                 catch (Exception EX)
                 {
 
-                    connection = 4;
                     DeviceSerial.ResetBuffer();
                     update_all = true;
                 }
             }
-            else connection = 4;
         }
 
         private void DevicePooling_Tick(object sender, EventArgs e)
@@ -254,17 +247,17 @@ namespace ProjectCool_BETA_v1._0
         int tick = 0;
         private void GraphicsWatchdog_Tick(object sender, EventArgs e)
         {
-            switch (connection)
+            switch (DeviceSerial.GetStatus())
             {
-                case 0:
+                case "DIS":
                     Connection.Text = "NULL";
                     ReverseColors(Connection, DevicePortLabel, 0);
                     break;
-                case 1:
+                case "CON":
                     Connection.Text = "STABLE";
                     ReverseColors(Connection, DevicePortLabel, 0);
                     break;
-                case 2:
+                case "TX":
                     GraphicsWatchdog.Interval = 200;
                     Connection.Text = "TRANSMIT";
                     if(tick++%2==0)
@@ -272,7 +265,7 @@ namespace ProjectCool_BETA_v1._0
                     else
                         ReverseColors(Connection, DevicePortLabel, 0);
                     break;
-                case 3:
+                case "RX":
                     GraphicsWatchdog.Interval = 500;
                     Connection.Text = "RECEIVE";
                     if (tick++ % 2 != 0)
@@ -280,7 +273,7 @@ namespace ProjectCool_BETA_v1._0
                     else
                         ReverseColors(Connection, DevicePortLabel, 0);
                     break;
-                case 4:
+                case "F":
                     GraphicsWatchdog.Interval = 100;
                     Connection.Text = "ERROR";
                         ReverseColors(Connection, DevicePortLabel, 1);        
@@ -297,7 +290,6 @@ namespace ProjectCool_BETA_v1._0
         void CommitChanges()
         {
         DevicePooling.Stop();
-        connection = 2;
         DeviceSerial.SendData(CreateQueue());
         if (DeviceSerial.ReceiveData() != "OK")
         {
