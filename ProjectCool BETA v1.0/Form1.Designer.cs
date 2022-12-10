@@ -53,7 +53,6 @@ namespace ProjectCool_BETA_v1._0
             this.TempHysteresis = new System.Windows.Forms.NumericUpDown();
             this.ActiveFanMode = new System.Windows.Forms.Label();
             this.FansMode = new System.Windows.Forms.ComboBox();
-            this.FanSpeed_manual_track = new System.Windows.Forms.TrackBar();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.FanSpeed = new System.Windows.Forms.PictureBox();
             this.CaseHumidity_label = new System.Windows.Forms.Label();
@@ -78,32 +77,33 @@ namespace ProjectCool_BETA_v1._0
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Breathe_speed_track = new System.Windows.Forms.TrackBar();
-            this.color_change_track = new System.Windows.Forms.TrackBar();
-            this.Saturation_track = new System.Windows.Forms.TrackBar();
-            this.Light_color_track = new System.Windows.Forms.TrackBar();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.brightness_manual_track = new System.Windows.Forms.TrackBar();
             this.GraphicsWatchdog = new System.Windows.Forms.Timer(this.components);
+            this.FanSpeed_manual_track = new ProgressBar_test.EdgerunnersTrackbar();
+            this.brightness_manual_track = new ProgressBar_test.EdgerunnersTrackbar();
+            this.Light_color_track = new ProgressBar_test.EdgerunnersTrackbar();
+            this.Saturation_track = new ProgressBar_test.EdgerunnersTrackbar();
+            this.color_change_track = new ProgressBar_test.EdgerunnersTrackbar();
+            this.Breathe_speed_track = new ProgressBar_test.EdgerunnersTrackbar();
             this.MainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.poolingRate)).BeginInit();
             this.FanControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TempHysteresis)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FanSpeed_manual_track)).BeginInit();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FanSpeed)).BeginInit();
             this.LEDcontrol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Breathe_speed_track)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.color_change_track)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Saturation_track)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Light_color_track)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FanSpeed_manual_track)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brightness_manual_track)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Light_color_track)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Saturation_track)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.color_change_track)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Breathe_speed_track)).BeginInit();
             this.SuspendLayout();
             // 
             // DevicePooling
@@ -209,8 +209,6 @@ namespace ProjectCool_BETA_v1._0
             this.PortSelect.Font = new System.Drawing.Font("Technos", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PortSelect.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(98)))), ((int)(((byte)(98)))));
             this.PortSelect.FormattingEnabled = true;
-            this.PortSelect.Items.AddRange(new object[] {
-            "N/A"});
             this.PortSelect.Location = new System.Drawing.Point(175, 108);
             this.PortSelect.Name = "PortSelect";
             this.PortSelect.Size = new System.Drawing.Size(108, 21);
@@ -273,6 +271,7 @@ namespace ProjectCool_BETA_v1._0
             this.FanControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.FanControl.BackgroundImage = global::ProjectCool_BETA_v1._0.Properties.Resources.Background_plate_fan;
             this.FanControl.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FanControl.Controls.Add(this.FanSpeed_manual_track);
             this.FanControl.Controls.Add(this.FanMode_2);
             this.FanControl.Controls.Add(this.label4);
             this.FanControl.Controls.Add(this.label3);
@@ -282,7 +281,6 @@ namespace ProjectCool_BETA_v1._0
             this.FanControl.Controls.Add(this.TempHysteresis);
             this.FanControl.Controls.Add(this.ActiveFanMode);
             this.FanControl.Controls.Add(this.FansMode);
-            this.FanControl.Controls.Add(this.FanSpeed_manual_track);
             this.FanControl.Location = new System.Drawing.Point(104, 453);
             this.FanControl.Name = "FanControl";
             this.FanControl.Size = new System.Drawing.Size(86, 14);
@@ -303,7 +301,7 @@ namespace ProjectCool_BETA_v1._0
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Technos", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(757, 366);
+            this.label4.Location = new System.Drawing.Point(755, 366);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 11);
             this.label4.TabIndex = 0;
@@ -404,22 +402,9 @@ namespace ProjectCool_BETA_v1._0
             "Fan 100%"});
             this.FansMode.Location = new System.Drawing.Point(209, 159);
             this.FansMode.Name = "FansMode";
-            this.FansMode.Size = new System.Drawing.Size(591, 32);
+            this.FansMode.Size = new System.Drawing.Size(589, 32);
             this.FansMode.TabIndex = 1;
             this.FansMode.Text = "N/A";
-            // 
-            // FanSpeed_manual_track
-            // 
-            this.FanSpeed_manual_track.Cursor = System.Windows.Forms.Cursors.SizeWE;
-            this.FanSpeed_manual_track.LargeChange = 10;
-            this.FanSpeed_manual_track.Location = new System.Drawing.Point(66, 337);
-            this.FanSpeed_manual_track.Maximum = 100;
-            this.FanSpeed_manual_track.Name = "FanSpeed_manual_track";
-            this.FanSpeed_manual_track.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.FanSpeed_manual_track.Size = new System.Drawing.Size(734, 45);
-            this.FanSpeed_manual_track.SmallChange = 5;
-            this.FanSpeed_manual_track.TabIndex = 3;
-            this.FanSpeed_manual_track.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
             // MainPanel
             // 
@@ -598,6 +583,11 @@ namespace ProjectCool_BETA_v1._0
             this.LEDcontrol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.LEDcontrol.BackgroundImage = global::ProjectCool_BETA_v1._0.Properties.Resources.Background_plate_RGB;
             this.LEDcontrol.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LEDcontrol.Controls.Add(this.Breathe_speed_track);
+            this.LEDcontrol.Controls.Add(this.color_change_track);
+            this.LEDcontrol.Controls.Add(this.Saturation_track);
+            this.LEDcontrol.Controls.Add(this.Light_color_track);
+            this.LEDcontrol.Controls.Add(this.brightness_manual_track);
             this.LEDcontrol.Controls.Add(this.label16);
             this.LEDcontrol.Controls.Add(this.label15);
             this.LEDcontrol.Controls.Add(this.label14);
@@ -606,10 +596,6 @@ namespace ProjectCool_BETA_v1._0
             this.LEDcontrol.Controls.Add(this.label11);
             this.LEDcontrol.Controls.Add(this.pictureBox2);
             this.LEDcontrol.Controls.Add(this.pictureBox1);
-            this.LEDcontrol.Controls.Add(this.Breathe_speed_track);
-            this.LEDcontrol.Controls.Add(this.color_change_track);
-            this.LEDcontrol.Controls.Add(this.Saturation_track);
-            this.LEDcontrol.Controls.Add(this.Light_color_track);
             this.LEDcontrol.Controls.Add(this.label9);
             this.LEDcontrol.Controls.Add(this.label8);
             this.LEDcontrol.Controls.Add(this.label7);
@@ -617,8 +603,7 @@ namespace ProjectCool_BETA_v1._0
             this.LEDcontrol.Controls.Add(this.label5);
             this.LEDcontrol.Controls.Add(this.label10);
             this.LEDcontrol.Controls.Add(this.NewLedMode);
-            this.LEDcontrol.Controls.Add(this.brightness_manual_track);
-            this.LEDcontrol.Location = new System.Drawing.Point(207, 453);
+            this.LEDcontrol.Location = new System.Drawing.Point(203, 453);
             this.LEDcontrol.Name = "LEDcontrol";
             this.LEDcontrol.Size = new System.Drawing.Size(86, 14);
             this.LEDcontrol.TabIndex = 0;
@@ -628,7 +613,7 @@ namespace ProjectCool_BETA_v1._0
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Technos", 5F);
-            this.label16.Location = new System.Drawing.Point(761, 377);
+            this.label16.Location = new System.Drawing.Point(761, 366);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(28, 7);
             this.label16.TabIndex = 0;
@@ -638,7 +623,7 @@ namespace ProjectCool_BETA_v1._0
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Technos", 5F);
-            this.label15.Location = new System.Drawing.Point(185, 376);
+            this.label15.Location = new System.Drawing.Point(176, 366);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(18, 7);
             this.label15.TabIndex = 0;
@@ -648,7 +633,7 @@ namespace ProjectCool_BETA_v1._0
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Technos", 5F);
-            this.label14.Location = new System.Drawing.Point(761, 337);
+            this.label14.Location = new System.Drawing.Point(761, 326);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(28, 7);
             this.label14.TabIndex = 0;
@@ -658,7 +643,7 @@ namespace ProjectCool_BETA_v1._0
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Technos", 5F);
-            this.label13.Location = new System.Drawing.Point(185, 336);
+            this.label13.Location = new System.Drawing.Point(176, 326);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(18, 7);
             this.label13.TabIndex = 0;
@@ -668,7 +653,7 @@ namespace ProjectCool_BETA_v1._0
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Technos", 5F);
-            this.label12.Location = new System.Drawing.Point(761, 171);
+            this.label12.Location = new System.Drawing.Point(761, 163);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(28, 7);
             this.label12.TabIndex = 0;
@@ -678,7 +663,7 @@ namespace ProjectCool_BETA_v1._0
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Technos", 5F);
-            this.label11.Location = new System.Drawing.Point(185, 170);
+            this.label11.Location = new System.Drawing.Point(176, 164);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(18, 7);
             this.label11.TabIndex = 0;
@@ -705,63 +690,23 @@ namespace ProjectCool_BETA_v1._0
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // Breathe_speed_track
-            // 
-            this.Breathe_speed_track.Cursor = System.Windows.Forms.Cursors.SizeWE;
-            this.Breathe_speed_track.Location = new System.Drawing.Point(188, 348);
-            this.Breathe_speed_track.Maximum = 100;
-            this.Breathe_speed_track.Name = "Breathe_speed_track";
-            this.Breathe_speed_track.Size = new System.Drawing.Size(591, 45);
-            this.Breathe_speed_track.TabIndex = 2;
-            this.Breathe_speed_track.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // color_change_track
-            // 
-            this.color_change_track.Cursor = System.Windows.Forms.Cursors.SizeWE;
-            this.color_change_track.Location = new System.Drawing.Point(188, 306);
-            this.color_change_track.Maximum = 100;
-            this.color_change_track.Name = "color_change_track";
-            this.color_change_track.Size = new System.Drawing.Size(591, 45);
-            this.color_change_track.TabIndex = 2;
-            this.color_change_track.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // Saturation_track
-            // 
-            this.Saturation_track.Cursor = System.Windows.Forms.Cursors.SizeWE;
-            this.Saturation_track.Location = new System.Drawing.Point(188, 237);
-            this.Saturation_track.Maximum = 255;
-            this.Saturation_track.Name = "Saturation_track";
-            this.Saturation_track.Size = new System.Drawing.Size(591, 45);
-            this.Saturation_track.TabIndex = 2;
-            this.Saturation_track.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // Light_color_track
-            // 
-            this.Light_color_track.Cursor = System.Windows.Forms.Cursors.SizeWE;
-            this.Light_color_track.Location = new System.Drawing.Point(188, 186);
-            this.Light_color_track.Maximum = 255;
-            this.Light_color_track.Name = "Light_color_track";
-            this.Light_color_track.Size = new System.Drawing.Size(591, 45);
-            this.Light_color_track.TabIndex = 2;
-            this.Light_color_track.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Technos", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Technos", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(52, 348);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(90, 11);
+            this.label9.Size = new System.Drawing.Size(99, 12);
             this.label9.TabIndex = 0;
             this.label9.Text = "BR. SPEED:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Technos", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Technos", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(52, 307);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(121, 11);
+            this.label8.Size = new System.Drawing.Size(132, 12);
             this.label8.TabIndex = 0;
             this.label8.Text = "COLOR SPEED:";
             // 
@@ -795,20 +740,94 @@ namespace ProjectCool_BETA_v1._0
             this.label5.TabIndex = 0;
             this.label5.Text = "BRIGHTNESS:";
             // 
-            // brightness_manual_track
-            // 
-            this.brightness_manual_track.Cursor = System.Windows.Forms.Cursors.SizeWE;
-            this.brightness_manual_track.Location = new System.Drawing.Point(188, 143);
-            this.brightness_manual_track.Maximum = 100;
-            this.brightness_manual_track.Name = "brightness_manual_track";
-            this.brightness_manual_track.Size = new System.Drawing.Size(591, 45);
-            this.brightness_manual_track.TabIndex = 2;
-            this.brightness_manual_track.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
             // GraphicsWatchdog
             // 
             this.GraphicsWatchdog.Interval = 500;
             this.GraphicsWatchdog.Tick += new System.EventHandler(this.GraphicsWatchdog_Tick);
+            // 
+            // FanSpeed_manual_track
+            // 
+            this.FanSpeed_manual_track.BackColor = System.Drawing.Color.Transparent;
+            this.FanSpeed_manual_track.Image = ((System.Drawing.Image)(resources.GetObject("FanSpeed_manual_track.Image")));
+            this.FanSpeed_manual_track.Iterator = 5;
+            this.FanSpeed_manual_track.Location = new System.Drawing.Point(66, 346);
+            this.FanSpeed_manual_track.Maximum = 100;
+            this.FanSpeed_manual_track.Minimum = 0;
+            this.FanSpeed_manual_track.Name = "FanSpeed_manual_track";
+            this.FanSpeed_manual_track.Size = new System.Drawing.Size(732, 17);
+            this.FanSpeed_manual_track.TabIndex = 3;
+            this.FanSpeed_manual_track.TabStop = false;
+            this.FanSpeed_manual_track.Value = 0;
+            // 
+            // brightness_manual_track
+            // 
+            this.brightness_manual_track.BackColor = System.Drawing.Color.Transparent;
+            this.brightness_manual_track.Image = ((System.Drawing.Image)(resources.GetObject("brightness_manual_track.Image")));
+            this.brightness_manual_track.Iterator = 5;
+            this.brightness_manual_track.Location = new System.Drawing.Point(188, 144);
+            this.brightness_manual_track.Maximum = 100;
+            this.brightness_manual_track.Minimum = 0;
+            this.brightness_manual_track.Name = "brightness_manual_track";
+            this.brightness_manual_track.Size = new System.Drawing.Size(591, 16);
+            this.brightness_manual_track.TabIndex = 4;
+            this.brightness_manual_track.TabStop = false;
+            this.brightness_manual_track.Value = 0;
+            // 
+            // Light_color_track
+            // 
+            this.Light_color_track.BackColor = System.Drawing.Color.Transparent;
+            this.Light_color_track.Image = ((System.Drawing.Image)(resources.GetObject("Light_color_track.Image")));
+            this.Light_color_track.Iterator = 5;
+            this.Light_color_track.Location = new System.Drawing.Point(188, 186);
+            this.Light_color_track.Maximum = 255;
+            this.Light_color_track.Minimum = 0;
+            this.Light_color_track.Name = "Light_color_track";
+            this.Light_color_track.Size = new System.Drawing.Size(591, 16);
+            this.Light_color_track.TabIndex = 4;
+            this.Light_color_track.TabStop = false;
+            this.Light_color_track.Value = 0;
+            // 
+            // Saturation_track
+            // 
+            this.Saturation_track.BackColor = System.Drawing.Color.Transparent;
+            this.Saturation_track.Image = ((System.Drawing.Image)(resources.GetObject("Saturation_track.Image")));
+            this.Saturation_track.Iterator = 5;
+            this.Saturation_track.Location = new System.Drawing.Point(188, 237);
+            this.Saturation_track.Maximum = 255;
+            this.Saturation_track.Minimum = 0;
+            this.Saturation_track.Name = "Saturation_track";
+            this.Saturation_track.Size = new System.Drawing.Size(591, 16);
+            this.Saturation_track.TabIndex = 4;
+            this.Saturation_track.TabStop = false;
+            this.Saturation_track.Value = 0;
+            // 
+            // color_change_track
+            // 
+            this.color_change_track.BackColor = System.Drawing.Color.Transparent;
+            this.color_change_track.Image = ((System.Drawing.Image)(resources.GetObject("color_change_track.Image")));
+            this.color_change_track.Iterator = 5;
+            this.color_change_track.Location = new System.Drawing.Point(188, 307);
+            this.color_change_track.Maximum = 100;
+            this.color_change_track.Minimum = 0;
+            this.color_change_track.Name = "color_change_track";
+            this.color_change_track.Size = new System.Drawing.Size(591, 16);
+            this.color_change_track.TabIndex = 4;
+            this.color_change_track.TabStop = false;
+            this.color_change_track.Value = 0;
+            // 
+            // Breathe_speed_track
+            // 
+            this.Breathe_speed_track.BackColor = System.Drawing.Color.Transparent;
+            this.Breathe_speed_track.Image = ((System.Drawing.Image)(resources.GetObject("Breathe_speed_track.Image")));
+            this.Breathe_speed_track.Iterator = 5;
+            this.Breathe_speed_track.Location = new System.Drawing.Point(188, 348);
+            this.Breathe_speed_track.Maximum = 100;
+            this.Breathe_speed_track.Minimum = 0;
+            this.Breathe_speed_track.Name = "Breathe_speed_track";
+            this.Breathe_speed_track.Size = new System.Drawing.Size(591, 16);
+            this.Breathe_speed_track.TabIndex = 4;
+            this.Breathe_speed_track.TabStop = false;
+            this.Breathe_speed_track.Value = 0;
             // 
             // ProjectCool
             // 
@@ -836,7 +855,6 @@ namespace ProjectCool_BETA_v1._0
             this.FanControl.ResumeLayout(false);
             this.FanControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TempHysteresis)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FanSpeed_manual_track)).EndInit();
             this.MainPanel.ResumeLayout(false);
             this.MainPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FanSpeed)).EndInit();
@@ -844,11 +862,12 @@ namespace ProjectCool_BETA_v1._0
             this.LEDcontrol.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Breathe_speed_track)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.color_change_track)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Saturation_track)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Light_color_track)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FanSpeed_manual_track)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brightness_manual_track)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Light_color_track)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Saturation_track)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.color_change_track)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Breathe_speed_track)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -886,20 +905,14 @@ namespace ProjectCool_BETA_v1._0
         private System.Windows.Forms.ComboBox FansMode;
         private System.Windows.Forms.Label TempHys;
         private System.Windows.Forms.NumericUpDown TempHysteresis;
-        private System.Windows.Forms.TrackBar FanSpeed_manual_track;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox NewLedMode;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel LEDcontrol;
-        private System.Windows.Forms.TrackBar brightness_manual_track;
-        private System.Windows.Forms.TrackBar Light_color_track;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TrackBar Saturation_track;
-        private System.Windows.Forms.TrackBar Breathe_speed_track;
-        private System.Windows.Forms.TrackBar color_change_track;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
@@ -912,6 +925,12 @@ namespace ProjectCool_BETA_v1._0
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Timer GraphicsWatchdog;
+        private ProgressBar_test.EdgerunnersTrackbar FanSpeed_manual_track;
+        private ProgressBar_test.EdgerunnersTrackbar Breathe_speed_track;
+        private ProgressBar_test.EdgerunnersTrackbar color_change_track;
+        private ProgressBar_test.EdgerunnersTrackbar Saturation_track;
+        private ProgressBar_test.EdgerunnersTrackbar Light_color_track;
+        private ProgressBar_test.EdgerunnersTrackbar brightness_manual_track;
     }
 }
 

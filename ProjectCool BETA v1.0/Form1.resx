@@ -2125,6 +2125,46 @@
         US7kQC4AAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="Breathe_speed_track.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAk8AAAAQCAYAAAAPgJtlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABtSURBVHhe7daxCcAwEMBAz/orZyAHUqS11d+BdtB6ZrYk
+        SZLu+uZpAQBwZJ4AAALzBAAQmCcAgMA8AQAE5gkAIDBPAACBeQIACMwTAEBgngAAAvMEABCYJwCAwDwB
+        AATmCQAg+OdJkiRJN81+Ac0lObEkvG5TAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="color_change_track.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAk8AAAAQCAYAAAAPgJtlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABtSURBVHhe7daxCcAwEMBAz/orZyAHUqS11d+BdtB6ZrYk
+        SZLu+uZpAQBwZJ4AAALzBAAQmCcAgMA8AQAE5gkAIDBPAACBeQIACMwTAEBgngAAAvMEABCYJwCAwDwB
+        AATmCQAg+OdJkiRJN81+Ac0lObEkvG5TAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="Saturation_track.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAk8AAAAQCAYAAAAPgJtlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABtSURBVHhe7daxCcAwEMBAz/orZyAHUqS11d+BdtB6ZrYk
+        SZLu+uZpAQBwZJ4AAALzBAAQmCcAgMA8AQAE5gkAIDBPAACBeQIACMwTAEBgngAAAvMEABCYJwCAwDwB
+        AATmCQAg+OdJkiRJN81+Ac0lObEkvG5TAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="Light_color_track.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAk8AAAAQCAYAAAAPgJtlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABtSURBVHhe7daxCcAwEMBAz/orZyAHUqS11d+BdtB6ZrYk
+        SZLu+uZpAQBwZJ4AAALzBAAQmCcAgMA8AQAE5gkAIDBPAACBeQIACMwTAEBgngAAAvMEABCYJwCAwDwB
+        AATmCQAg+OdJkiRJN81+Ac0lObEkvG5TAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="brightness_manual_track.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAk8AAAAQCAYAAAAPgJtlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABtSURBVHhe7daxCcAwEMBAz/orZyAHUqS11d+BdtB6ZrYk
+        SZLu+uZpAQBwZJ4AAALzBAAQmCcAgMA8AQAE5gkAIDBPAACBeQIACMwTAEBgngAAAvMEABCYJwCAwDwB
+        AATmCQAg+OdJkiRJN81+Ac0lObEkvG5TAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         /9j/4AAQSkZJRgABAQEAYABgAAD/4QasRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAExAAIAAAAm
@@ -2702,6 +2742,14 @@
   <metadata name="GraphicsWatchdog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>146, 17</value>
   </metadata>
+  <data name="FanSpeed_manual_track.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAtwAAAARCAYAAADuQHsqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB7SURBVHhe7dZBDQAhEMBAtK7lEwQJj1NAfzNJPXR9M1uS
+        JElS0x3uBQAAPGe4AQAgZLgBACBkuAEAIGS4AQAgZLgBACBkuAEAIGS4AQAgZLgBACBkuAEAIGS4AQAg
+        ZLgBACBkuAEAIGS4AQAgZLgBACD0D7ckSZKkotkHjfgYRgaDI+wAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEA7gAAAAEAIAAo2AMAFgAAACgAAADuAAAAAAIAAAEAIAAAAAAAALgDABMLAAATCwAAAAAAAAAA
