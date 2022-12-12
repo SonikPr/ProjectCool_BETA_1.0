@@ -191,16 +191,17 @@ namespace ProjectCool_BETA_v1._0
                     }
 
                     sysfans.CurrentFanMode = DeviceData[0];
+                    sysfans.TargetFanSpeed = DeviceData[1];
                     sysleds.Mode = (byte)DeviceData[2];
                     sysleds.setBrightnessFromDevice(DeviceData[3]);
                     sysleds.Hue = DeviceData[4];
                     sysleds.Sat = DeviceData[5];
                     sysleds.ColorChangeSpeed = DeviceData[6];
                     sysleds.BreatheSpeed = DeviceData[7];
-                    sysfans.CurrentFanSpeed = DeviceData[8];
-                    systemps.T = DeviceData[9];
-                    systemps.H = DeviceData[10];
-                    double hysteresis = DeviceData[11];
+                    sysfans.Hysteresis = DeviceData[8];
+                    sysfans.CurrentFanSpeed = DeviceData[9];
+                    systemps.T = DeviceData[10];
+                    systemps.H = DeviceData[11];
 
 
 
@@ -218,8 +219,9 @@ namespace ProjectCool_BETA_v1._0
 
                     if (update_all)
                     {
+                        FanSpeed_manual_track.Value = sysfans.TargetFanSpeed;
                         FansMode.SelectedIndex = sysfans.CurrentFanMode;
-                        TempHysteresis.Value = Convert.ToDecimal(hysteresis / 10);
+                        TempHysteresis.Value = Convert.ToDecimal(sysfans.Hysteresis / 10);
                         NewLedMode.SelectedIndex = sysleds.Mode;
                         brightness_manual_track.Value = sysleds.Brightness;
                         color_change_track.Value = sysleds.ColorChangeSpeed;

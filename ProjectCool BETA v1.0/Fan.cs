@@ -11,6 +11,7 @@ namespace ProjectCool_BETA_v1._0
         private int fan_speed;
         private int fan_mode;
         private int tagret_fan_speed;
+        private double hysteresis;
 
         public void CreateFans() { }
 
@@ -18,6 +19,12 @@ namespace ProjectCool_BETA_v1._0
         {
             get { return fan_speed; }
             set { fan_speed = value; }
+        }
+
+        public double Hysteresis
+        {
+            get { return hysteresis; }
+            set { hysteresis = value; }
         }
 
         public int CurrentFanMode
@@ -29,7 +36,7 @@ namespace ProjectCool_BETA_v1._0
         public int TargetFanSpeed
         {
             get { return tagret_fan_speed; }
-            set {tagret_fan_speed = map(value, 0, 100, 0, 255); }
+            set {tagret_fan_speed = value; }
         }
 
 
