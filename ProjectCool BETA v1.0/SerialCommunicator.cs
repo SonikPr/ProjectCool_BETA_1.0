@@ -118,7 +118,7 @@ namespace ProjectCool_BETA_v1._0
             PortStatus = "DIS";
         }
 
-        private void fail()
+        public void fail()
         {
             PortStatus = "F";
         }
@@ -126,6 +126,17 @@ namespace ProjectCool_BETA_v1._0
         public string GetStatus()
         {
             return PortStatus;
+        }
+
+        public void ResetSettings(byte device_hardware_ver)
+        {
+            switch (device_hardware_ver)
+            {
+                case 0: //ProjectCool v1.0
+                    this.SendData("0;50;0;255;180;255;70;40;15;E"); //Set fan preset default, manual fan speed 50%, etc
+                    break; 
+            }
+
         }
     }
 }

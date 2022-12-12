@@ -173,8 +173,9 @@ namespace ProjectCool_BETA_v1._0
             {
                 DevicePooling.Start();
             }
-        }   
-        
+        }
+
+        byte errors_count = 0;
         void UpdateInfo() {
         DeviceSerial.SendData("G");
             string data = "0";
@@ -235,7 +236,22 @@ namespace ProjectCool_BETA_v1._0
                 {
 
                     DeviceSerial.ResetBuffer();
-                    update_all = true;
+                    DeviceSerial.fail();
+                    if (errors_count++ > 10)
+                    {
+                        DevicePooling.Stop();
+                        DialogResult Reset;
+                        Reset = MessageBox.Show(this, "An error occured during data gatering. Perform factory reset?", "Data gathering error occured", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+
+                        if (Reset == DialogResult.Yes)
+                        {
+                            DeviceSerial.ResetSettings(0);
+                            errors_count = 0;
+                            update_all = true;
+                            DevicePooling.Start();
+                        }
+                    }
+                    
                 }
             }
         }
