@@ -79,12 +79,15 @@ namespace ProjectCool_BETA_v1._0
 
         public void ResetBuffer()
         {
-                 this.connected();
+
+            if (MainPort.IsOpen)
+            {
+                this.connected();
                 MainPort.ReadExisting();
                 MainPort.DiscardInBuffer();
                 MainPort.DiscardOutBuffer();
-        }
-
+            }
+            }
             public string ReceiveData()
         {
             try
