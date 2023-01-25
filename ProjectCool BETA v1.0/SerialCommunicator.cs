@@ -13,7 +13,6 @@ namespace ProjectCool_BETA_v1._0
     {
         SerialPort MainPort = new SerialPort();
         private string[] ports;
-        private string receivedData;
         private string PortStatus = "DIS";
         public void CreateSerial() {
 
@@ -80,16 +79,18 @@ namespace ProjectCool_BETA_v1._0
 
         public void ResetBuffer()
         {
-            MainPort.DiscardInBuffer();
+                 this.connected();
+                MainPort.ReadExisting();
+                MainPort.DiscardInBuffer();
+                MainPort.DiscardOutBuffer();
         }
-        public string ReceiveData()
+
+            public string ReceiveData()
         {
             try
             {
-                receivedData = MainPort.ReadExisting();
-                MainPort.DiscardInBuffer();
                 this.RX();
-                return receivedData;
+                return MainPort.ReadExisting();
             }
             catch(Exception ex)
             {
